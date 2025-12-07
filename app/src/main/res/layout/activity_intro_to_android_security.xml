@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#141414"
+    tools:context=".intro_to_android_security">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Intro to Android Security"
+        android:fontFamily="monospace"
+        android:textColor="@color/neon_green"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Content -->
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="monospace"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="
+Android security is the set of mechanisms and best practices used to protect Android devices, applications, and user data from malicious attacks. Because Android is the most widely used mobile operating system, it is a primary target for attackers.
+
+Android security focuses on isolating apps using sandboxing, permissions, application signing, and secure APIs to prevent unauthorized access to sensitive data such as contacts, messages, files, and system resources.
+
+Why Android security is important:
+• Billions of users store personal, financial, and work data on their phones
+• Mobile apps often handle sensitive authentication tokens and payment information
+• A single vulnerable app can expose large amounts of private data
+
+Real-world Android security incidents:
+• Stagefright Vulnerability (2015): A critical bug in Android’s media library that allowed attackers to execute code by sending a malicious MMS message without user interaction.
+• Joker Malware: A malicious malware family that infected Google Play apps and secretly subscribed users to premium services.
+• StrandHogg Attack: A task re-parenting vulnerability that allowed malicious apps to impersonate legitimate apps and steal credentials.
+
+In the next labs, you will explore real Android vulnerabilities and learn how attackers exploit weak implementations and how to defend against them.
+" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/to_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_rounded_button_green"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.05"
+        android:paddingVertical="16dp"
+        android:text="HOME PAGE"
+        android:textColor="@color/app_background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
