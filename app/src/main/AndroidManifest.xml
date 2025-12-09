@@ -26,6 +26,9 @@
         <activity
             android:name=".LabsActivity"
             android:exported="false" />
+        <activity
+            android:name=".SQL_injection"
+            android:exported="false" />
     </application>
 
 </manifest>

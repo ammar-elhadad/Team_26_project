@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Team_26_project</string>
+    <string name="sql_briefing_text">
+        Your mission is to access the login portal without knowing the credentials. This can be achieved by exploiting a simple SQL injection flaw in the system.
+    </string>
+
 </resources>

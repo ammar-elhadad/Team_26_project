@@ -74,6 +74,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"/>
 
+            <include layout="@layout/module_card"
+                android:id="@+id/module_SQL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
         </LinearLayout>
     </ScrollView>
 
