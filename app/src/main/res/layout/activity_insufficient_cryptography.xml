@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D0D"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="DEFCON 2026 Ticketing"
+            android:textColor="#39FF14"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[ SECURE_OFFLINE_MODE ]"
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:fontFamily="monospace"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#333333"
+            android:layout_marginVertical="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1A1A1A"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="> MISSION_OBJECTIVE:"
+                android:textColor="#39FF14"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="monospace"
+                android:lineSpacingExtra="4dp"
+                android:text="The server uses AES-CBC To encrypt your Ticker to DEFCON 2026 And the ticket format is: \n`username={username}&amp;IsVip=0`.\n but forgot the integrity check (HMAC).\n\n1.Figure out the right username length .\n2. FLIP A BIT in the encrypted file.\n3. Validate to bypass auth."
+                android:textColor="#CCCCCC"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="> ENTER_USERNAME"
+            android:layout_marginTop="24dp"
+            android:fontFamily="monospace"
+            android:textColor="#39FF14"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="GuestUser123456"
+            android:textColorHint="#555555"
+            android:textColor="#FFFFFF"
+            android:text="GuestUser123456"
+            android:backgroundTint="#39FF14"
+            android:fontFamily="monospace"
+            android:inputType="textNoSuggestions"/>
+
+        <Button
+            android:id="@+id/btnGetTicket"
+            android:layout_width="362dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:width="200dip"
+            android:backgroundTint="#39FF14"
+            android:fontFamily="monospace"
+            android:maxWidth="200dip"
+            android:text="1. DOWNLOAD_TICKET.bin"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="monospace"
+            android:text="> Offline Ticket:"
+            android:textColor="#888888"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[ NO_DATA_FOUND ]"
+            android:fontFamily="monospace"
+            android:textColor="#39FF14"
+            android:background="#000000"
+            android:padding="12dp"
+            android:textSize="11sp"/>
+
+        <Button
+            android:id="@+id/btnTamper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="> EXECUTE_BIT_FLIP_ATTACK"
+            android:fontFamily="monospace"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D50000"
+            android:layout_marginTop="16dp"/>
+
+        <Button
+            android:id="@+id/btnValidate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. UPLOAD_AND_VERIFY"
+            android:fontFamily="monospace"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:backgroundTint="#39FF14"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+</ScrollView>

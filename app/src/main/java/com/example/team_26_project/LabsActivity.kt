@@ -22,5 +22,15 @@ class LabsActivity : AppCompatActivity() {
 
         }
 
+
+        val cryptoModule: View = findViewById(R.id.crypto)
+        val cryptoTitle: TextView = cryptoModule.findViewById(R.id.tvVulnTitle)
+        cryptoTitle.text = "Insufficient Cryptography"
+        val CryptoButton = cryptoModule.findViewById<Button>(R.id.btnReadLab)
+        CryptoButton.setOnClickListener {
+            val intent = Intent(this, InsufficientCryptography::class.java)
+            startActivity(intent)
+        }
+
     }
 }
