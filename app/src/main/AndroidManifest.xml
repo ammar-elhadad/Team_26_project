@@ -12,6 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Team_26_project">
         <activity
+            android:name=".deepLink"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="myapp"
+                    android:host="login"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".private_activity"
+            android:exported="false" />
+        <activity
+            android:name=".redirect_activity"
+            android:exported="true" />
+        <activity
+            android:name=".Admin"
+            android:exported="true" />
+        <activity
+            android:name=".IntentLab"
+            android:exported="false" />
+        <activity
             android:name=".intro_to_android_security"
             android:exported="false" />
         <activity

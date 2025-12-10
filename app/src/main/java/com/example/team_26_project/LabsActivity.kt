@@ -23,6 +23,7 @@ class LabsActivity : AppCompatActivity() {
 
         }
 
+
         //module sql
         val moduleSqlCard: View = findViewById(R.id.module_SQL)
 
@@ -32,6 +33,35 @@ class LabsActivity : AppCompatActivity() {
         val sqlButton: Button = moduleSqlCard.findViewById(R.id.btnReadLab)
         sqlButton.setOnClickListener {
             startActivity(Intent(this, SQL_injection::class.java))
+        }
+
+
+        val intent_module:View = findViewById(R.id.module2)
+        val intent_title: TextView = intent_module.findViewById(R.id.tvVulnTitle)
+        intent_title.text = "Intent Activity"
+        val intent_lab_button : Button = intent_module.findViewById(R.id.btnReadLab)
+        intent_lab_button.setOnClickListener {
+            val intent_lab = Intent(this, IntentLab::class.java)
+            startActivity(intent_lab)
+        }
+
+
+        val redirect_module:View = findViewById(R.id.module3)
+        val redirect_title: TextView = redirect_module.findViewById(R.id.tvVulnTitle)
+        redirect_title.text = "Intent Redirection"
+        val redirect_lab_button : Button = redirect_module.findViewById(R.id.btnReadLab)
+        redirect_lab_button.setOnClickListener {
+            val redirect_intent = Intent(this, redirect_activity::class.java)
+            startActivity(redirect_intent)
+        }
+
+        val deep_link_module:View = findViewById(R.id.module4)
+        val deep_link_title : TextView = deep_link_module.findViewById(R.id.tvVulnTitle)
+        deep_link_title.text = "Deep Link"
+        val deep_link_lab_button : Button = deep_link_module.findViewById(R.id.btnReadLab)
+        deep_link_lab_button.setOnClickListener {
+            val deep_link_intent = Intent(this, deepLink::class.java)
+            startActivity(deep_link_intent)
         }
 
 
