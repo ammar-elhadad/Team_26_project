@@ -32,6 +32,14 @@ class LabsActivity : AppCompatActivity() {
         }
 
 
+        val redirect_module:View = findViewById(R.id.module3)
+        val redirect_title: TextView = redirect_module.findViewById(R.id.tvVulnTitle)
+        redirect_title.text = "Intent Redirection"
+        val redirect_lab_button : Button = redirect_module.findViewById(R.id.btnReadLab)
+        redirect_lab_button.setOnClickListener {
+            val redirect_intent = Intent(this, redirect_activity::class.java)
+            startActivity(redirect_intent)
+        }
 
     }
 }

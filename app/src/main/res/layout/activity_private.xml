@@ -6,22 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background_dark"
-    tools:context=".Admin">
+    tools:context=".private_activity">
+
 
     <TextView
         android:id="@+id/challenge_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="340dp"
+        android:layout_height="141dp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:letterSpacing="0.05"
-        android:text="Admin page"
+        android:text="this is a private page you shouldn't be here "
         android:textColor="#FFFFFF"
         android:textSize="28sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="90dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.488" />
 
     <LinearLayout
 
@@ -50,14 +54,14 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/mission_briefing_text"
+            android:id="@+id/flag_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
-            android:text="PwnD{b4d_1int3nt5}"
+            android:text=""
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
     </LinearLayout>

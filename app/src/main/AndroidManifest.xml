@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Team_26_project">
         <activity
+            android:name=".private_activity"
+            android:exported="false" />
+        <activity
+            android:name=".redirect_activity"
+            android:exported="true" />
+        <activity
             android:name=".Admin"
             android:exported="true" />
         <activity
