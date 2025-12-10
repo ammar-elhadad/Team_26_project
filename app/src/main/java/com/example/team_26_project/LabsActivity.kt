@@ -22,5 +22,16 @@ class LabsActivity : AppCompatActivity() {
 
         }
 
+        val intent_module:View = findViewById(R.id.module2)
+        val intent_title: TextView = intent_module.findViewById(R.id.tvVulnTitle)
+        intent_title.text = "Intent Activity"
+        val intent_lab_button : Button = intent_module.findViewById(R.id.btnReadLab)
+        intent_lab_button.setOnClickListener {
+            val intent_lab = Intent(this, IntentLab::class.java)
+            startActivity(intent_lab)
+        }
+
+
+
     }
 }

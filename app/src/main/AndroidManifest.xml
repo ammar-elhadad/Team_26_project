@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Team_26_project">
         <activity
+            android:name=".Admin"
+            android:exported="true" />
+        <activity
+            android:name=".IntentLab"
+            android:exported="false" />
+        <activity
             android:name=".intro_to_android_security"
             android:exported="false" />
         <activity
