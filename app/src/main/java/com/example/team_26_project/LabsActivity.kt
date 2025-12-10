@@ -41,5 +41,14 @@ class LabsActivity : AppCompatActivity() {
             startActivity(redirect_intent)
         }
 
+        val deep_link_module:View = findViewById(R.id.module4)
+        val deep_link_title : TextView = deep_link_module.findViewById(R.id.tvVulnTitle)
+        deep_link_title.text = "Deep Link"
+        val deep_link_lab_button : Button = deep_link_module.findViewById(R.id.btnReadLab)
+        deep_link_lab_button.setOnClickListener {
+            val deep_link_intent = Intent(this, deepLink::class.java)
+            startActivity(deep_link_intent)
+        }
+
     }
 }
