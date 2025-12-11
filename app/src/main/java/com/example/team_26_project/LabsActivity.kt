@@ -23,14 +23,30 @@ class LabsActivity : AppCompatActivity() {
         }
 
 
+
+
+        // Insufficient Cryptography
         val cryptoModule: View = findViewById(R.id.crypto)
         val cryptoTitle: TextView = cryptoModule.findViewById(R.id.tvVulnTitle)
         cryptoTitle.text = "Insufficient Cryptography"
+
         val CryptoButton = cryptoModule.findViewById<Button>(R.id.btnReadLab)
         CryptoButton.setOnClickListener {
             val intent = Intent(this, InsufficientCryptography::class.java)
             startActivity(intent)
         }
 
+
+
+        // Insecure WebView
+        val webviewModule: View = findViewById(R.id.webview)
+        val webviewTitle: TextView = webviewModule.findViewById(R.id.tvVulnTitle)
+        webviewTitle.text = "Insecure WebView Activity"
+
+        val webviewButton = webviewModule.findViewById<Button>(R.id.btnReadLab)
+        webviewButton.setOnClickListener {
+            val intent = Intent(this, InsecureWebView::class.java)
+            startActivity(intent)
+        }
     }
 }
