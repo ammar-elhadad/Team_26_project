@@ -1,7 +1,17 @@
-# Virtual Environment
+# IDE files
+.idea/
+
+# Gradle files
+.gradle/
+build/
+local.properties
+
+# Python
 venv/
 __pycache__/
 *.pyc
 
-# IDE files
-.idea/
+# Other
+captures/
+.DS_Store
+Thumbs.db
