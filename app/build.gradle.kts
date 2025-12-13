@@ -68,4 +68,18 @@ dependencies {
 
     // Coroutines testing
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+    // Mockito
+    testImplementation("org.mockito:mockito-core:5.11.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    //OkHttp
+    testImplementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+
+    //mockito
+    testImplementation("org.mockito:mockito-core:5.11.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation("junit:junit:4.13.2")
+
+
 }
