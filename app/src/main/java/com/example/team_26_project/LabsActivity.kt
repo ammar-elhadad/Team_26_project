@@ -36,6 +36,7 @@ class LabsActivity : AppCompatActivity() {
         }
 
 
+        //module2
         val intent_module:View = findViewById(R.id.module2)
         val intent_title: TextView = intent_module.findViewById(R.id.tvVulnTitle)
         intent_title.text = "Intent Activity"
@@ -45,7 +46,7 @@ class LabsActivity : AppCompatActivity() {
             startActivity(intent_lab)
         }
 
-
+        //module 3
         val redirect_module:View = findViewById(R.id.module3)
         val redirect_title: TextView = redirect_module.findViewById(R.id.tvVulnTitle)
         redirect_title.text = "Intent Redirection"
@@ -55,6 +56,7 @@ class LabsActivity : AppCompatActivity() {
             startActivity(redirect_intent)
         }
 
+        //module 4
         val deep_link_module:View = findViewById(R.id.module4)
         val deep_link_title : TextView = deep_link_module.findViewById(R.id.tvVulnTitle)
         deep_link_title.text = "Deep Link"
@@ -65,5 +67,29 @@ class LabsActivity : AppCompatActivity() {
         }
 
 
+
+        // Insufficient Cryptography
+        val cryptoModule: View = findViewById(R.id.crypto)
+        val cryptoTitle: TextView = cryptoModule.findViewById(R.id.tvVulnTitle)
+        cryptoTitle.text = "Insufficient Cryptography"
+
+        val CryptoButton = cryptoModule.findViewById<Button>(R.id.btnReadLab)
+        CryptoButton.setOnClickListener {
+            val intent = Intent(this, InsufficientCryptography::class.java)
+            startActivity(intent)
+        }
+
+
+
+        // Insecure WebView
+        val webviewModule: View = findViewById(R.id.webview)
+        val webviewTitle: TextView = webviewModule.findViewById(R.id.tvVulnTitle)
+        webviewTitle.text = "Insecure WebView Activity"
+
+        val webviewButton = webviewModule.findViewById<Button>(R.id.btnReadLab)
+        webviewButton.setOnClickListener {
+            val intent = Intent(this, InsecureWebView::class.java)
+            startActivity(intent)
+        }
     }
 }
