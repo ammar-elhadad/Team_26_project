@@ -28,7 +28,7 @@ class LabsActivity : AppCompatActivity() {
         val moduleSqlCard: View = findViewById(R.id.module_SQL)
 
         val sqlTitle: TextView = moduleSqlCard.findViewById(R.id.tvVulnTitle)
-        sqlTitle.text = "SQL Injection Bypass"
+        sqlTitle.text = "SQL Injection"
 
         val sqlButton: Button = moduleSqlCard.findViewById(R.id.btnReadLab)
         sqlButton.setOnClickListener {
@@ -93,7 +93,7 @@ class LabsActivity : AppCompatActivity() {
         }
         val Data_Storage:View = findViewById(R.id.DataStorage)
         val Data_Storage_title : TextView = Data_Storage.findViewById(R.id.tvVulnTitle)
-        Data_Storage_title.text = "Insecure_Data_Storage"
+        Data_Storage_title.text = "Insecure Data Storage"
         val Data_Storage_Button : Button = Data_Storage.findViewById(R.id.btnReadLab)
         Data_Storage_Button.setOnClickListener {
             val Data_Storage_intent = Intent(this, DataStorage::class.java)
