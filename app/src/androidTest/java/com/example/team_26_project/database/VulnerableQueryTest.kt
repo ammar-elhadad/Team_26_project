@@ -37,7 +37,7 @@ class VulnerableQueryTest {
         db.close()
     }
 
-    //1: login with wrong password
+    //1: wrong password
     @Test
     fun loginWrongPassword() {
         val query = userDao.buildVulnerableLoginQuery(
