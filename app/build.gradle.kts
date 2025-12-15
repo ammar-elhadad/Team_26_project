@@ -81,5 +81,7 @@ dependencies {
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
     testImplementation("junit:junit:4.13.2")
 
+    //esspreso
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.6.1")
 
 }
