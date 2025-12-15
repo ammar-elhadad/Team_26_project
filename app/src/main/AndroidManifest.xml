@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Team_26_project"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DataStorage"
+            android:exported="false" />
+        <activity
+            android:name=".database.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".InsecureWebView"
             android:exported="true" />
         <activity
@@ -22,15 +28,16 @@
             android:exported="false" />
         <activity
             android:name=".deepLink"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:scheme="myapp"
-                    android:host="login"/>
+                    android:host="login"
+                    android:scheme="myapp" />
             </intent-filter>
         </activity>
         <activity

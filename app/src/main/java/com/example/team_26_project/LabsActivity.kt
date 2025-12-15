@@ -91,5 +91,13 @@ class LabsActivity : AppCompatActivity() {
             val intent = Intent(this, InsecureWebView::class.java)
             startActivity(intent)
         }
+        val Data_Storage:View = findViewById(R.id.DataStorage)
+        val Data_Storage_title : TextView = Data_Storage.findViewById(R.id.tvVulnTitle)
+        Data_Storage_title.text = "Insecure_Data_Storage"
+        val Data_Storage_Button : Button = Data_Storage.findViewById(R.id.btnReadLab)
+        Data_Storage_Button.setOnClickListener {
+            val Data_Storage_intent = Intent(this, DataStorage::class.java)
+            startActivity(Data_Storage_intent)
+        }
     }
 }
