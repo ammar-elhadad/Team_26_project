@@ -1,6 +1,7 @@
 package com.example.team_26_project
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -23,6 +24,14 @@ class MainActivity : AppCompatActivity() {
         accessLabs.setOnClickListener {
             val intent = Intent(this, LabsActivity::class.java)
             startActivity(intent)
+        }
+        val feedback_button: Button = findViewById<Button>(R.id.feedback)
+        feedback_button.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("feedbackapp://leave-feedback")
+            }
+            startActivity(intent)
+
         }
     }
 }

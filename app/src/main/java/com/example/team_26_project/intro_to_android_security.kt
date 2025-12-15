@@ -1,6 +1,7 @@
 package com.example.team_26_project
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -23,5 +24,13 @@ class intro_to_android_security : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        val webpage: Uri = Uri.parse("https://mas.owasp.org/MASVS/")
+
+        val readmore = findViewById<Button>(R.id.read_more)
+        readmore.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, webpage)
+            startActivity(intent)
+        }
+
     }
 }
