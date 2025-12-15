@@ -18,9 +18,6 @@
             android:name=".DataStorage"
             android:exported="false" />
         <activity
-            android:name=".database.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".InsecureWebView"
             android:exported="true" />
         <activity
