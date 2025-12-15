@@ -26,6 +26,6 @@ class deepLink : AppCompatActivity() {
         } else {
             Toast.makeText(this, "No login token", Toast.LENGTH_SHORT).show()
         }
-        finish()
+        //finish()
     }
 }
