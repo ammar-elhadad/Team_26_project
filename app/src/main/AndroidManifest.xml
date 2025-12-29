@@ -15,6 +15,21 @@
         android:theme="@style/Theme.Team_26_project"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".sql"
+            android:exported="false" />
+        <activity
+            android:name=".deep_link"
+            android:exported="false" />
+        <activity
+            android:name=".InsecureStorageExplanationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".intent_redirection_explanation"
+            android:exported="false" />
+        <activity
+            android:name=".intent_explanation"
+            android:exported="false" />
+        <activity
             android:name=".DataStorage"
             android:exported="false" />
         <activity

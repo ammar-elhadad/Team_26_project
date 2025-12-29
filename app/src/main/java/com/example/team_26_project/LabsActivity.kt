@@ -32,7 +32,7 @@ class LabsActivity : AppCompatActivity() {
 
         val sqlButton: Button = moduleSqlCard.findViewById(R.id.btnReadLab)
         sqlButton.setOnClickListener {
-            startActivity(Intent(this, SQL_injection::class.java))
+            startActivity(Intent(this, sql::class.java))
         }
 
 
@@ -42,7 +42,7 @@ class LabsActivity : AppCompatActivity() {
         intent_title.text = "Intent Activity"
         val intent_lab_button : Button = intent_module.findViewById(R.id.btnReadLab)
         intent_lab_button.setOnClickListener {
-            val intent_lab = Intent(this, IntentLab::class.java)
+            val intent_lab = Intent(this, intent_explanation::class.java)
             startActivity(intent_lab)
         }
 
@@ -52,7 +52,7 @@ class LabsActivity : AppCompatActivity() {
         redirect_title.text = "Intent Redirection"
         val redirect_lab_button : Button = redirect_module.findViewById(R.id.btnReadLab)
         redirect_lab_button.setOnClickListener {
-            val redirect_intent = Intent(this, redirect_activity::class.java)
+            val redirect_intent = Intent(this, intent_redirection_explanation::class.java)
             startActivity(redirect_intent)
         }
 
@@ -62,7 +62,7 @@ class LabsActivity : AppCompatActivity() {
         deep_link_title.text = "Deep Link"
         val deep_link_lab_button : Button = deep_link_module.findViewById(R.id.btnReadLab)
         deep_link_lab_button.setOnClickListener {
-            val deep_link_intent = Intent(this, deepLink::class.java)
+            val deep_link_intent = Intent(this, deep_link::class.java)
             startActivity(deep_link_intent)
         }
 
@@ -96,7 +96,7 @@ class LabsActivity : AppCompatActivity() {
         Data_Storage_title.text = "Insecure Data Storage"
         val Data_Storage_Button : Button = Data_Storage.findViewById(R.id.btnReadLab)
         Data_Storage_Button.setOnClickListener {
-            val Data_Storage_intent = Intent(this, DataStorage::class.java)
+            val Data_Storage_intent = Intent(this, InsecureStorageExplanationActivity::class.java)
             startActivity(Data_Storage_intent)
         }
     }

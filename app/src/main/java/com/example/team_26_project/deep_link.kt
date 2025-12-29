@@ -1,7 +1,6 @@
 package com.example.team_26_project
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -9,28 +8,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class intro_to_android_security : AppCompatActivity() {
+class deep_link : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_intro_to_android_security)
+        setContentView(R.layout.activity_deep_link2)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val tohome = findViewById<Button>(R.id.to_home)
-        tohome.setOnClickListener {
-            val intent = Intent(this, LabsActivity::class.java)
+        val accesslab: Button = findViewById<Button>(R.id.btnAccessLab)
+        accesslab.setOnClickListener {
+            val intent = Intent(this, deepLink::class.java)
             startActivity(intent)
-        }
-        val webpage: Uri = Uri.parse("https://mas.owasp.org/MASVS/")
 
-        val readmore = findViewById<Button>(R.id.read_more)
-        readmore.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, webpage)
-            startActivity(intent)
         }
+
 
     }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_dark"
+    android:padding="24dp"
+    tools:context=".InsecureStorageExplanationActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INSECURE DATA STORAGE"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.05"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="48dp"/>
+
+    <!-- Underline -->
+    <View
+        android:id="@+id/underline"
+        android:layout_width="280dp"
+        android:layout_height="2dp"
+        android:background="@color/neon_green"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Explanation Box -->
+    <LinearLayout
+        android:id="@+id/explanationBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/green_border_box"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/underline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnAccessLab"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHARED PREFERENCES"
+            android:textColor="@color/neon_green"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SharedPreferences are commonly used to store application data such as user settings, tokens, or credentials.\n\nWhen sensitive information is stored in plain text, it becomes accessible to attackers with local access, backups, or a compromised device."
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="6dp"
+            android:gravity="center"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WHY THIS IS DANGEROUS"
+            android:textColor="@color/neon_green"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Attackers can extract SharedPreferences files to recover sensitive data such as authentication tokens or user credentials.\n\nThis can lead to account takeover, session hijacking, or unauthorized access."
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="6dp"
+            android:gravity="center"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAccessLab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_rounded_button_green"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.05"
+        android:paddingVertical="16dp"
+        android:text="ACCESS STORAGE LAB"
+        android:textColor="@color/app_background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
