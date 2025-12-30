@@ -41,7 +41,7 @@ class SQL_injection : AppCompatActivity() {
             val results = vulnerableQuery(username, password)
 
             if (results.isNotEmpty()) {
-                Toast.makeText(this, "Logged in!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Logged in! \nPwnD{squ3l_1njecti0n}", Toast.LENGTH_LONG).show()
                 val sb = StringBuilder("Login Success!\n\nLeaked Account Data:\n--------------------------\n")
                 results.forEach {
                     sb.append("User: ${it.first}\nPass: ${it.second}\n--------------------------\n")
