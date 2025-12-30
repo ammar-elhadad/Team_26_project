@@ -1,107 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background_dark"
-    android:padding="24dp"
     tools:context=".intent_explanation">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INTENT &amp; EXPORTED ACTIVITY"
-        android:textColor="#FFFFFF"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:fontFamily="monospace"
-        android:letterSpacing="0.05"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="48dp"
-        android:gravity="center"/>
-
-    <!-- Underline -->
-    <View
-        android:id="@+id/underline"
-        android:layout_width="280dp"
-        android:layout_height="2dp"
-        android:background="@color/neon_green"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <!-- Explanation Box -->
+    <!-- Header -->
     <LinearLayout
-        android:id="@+id/explanationBox"
-        android:layout_width="0dp"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/green_border_box"
-        android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/underline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnAccessLab"
-        android:layout_marginTop="32dp">
+        android:padding="24dp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="INTENT VULNERABILITY"
+            android:text="INTENT &amp; EXPORTED ACTIVITY"
             android:textColor="@color/neon_green"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-condensed"
-            android:layout_gravity="center_horizontal"/>
+            android:fontFamily="monospace"
+            android:letterSpacing="0.05" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="The application receives data through Intents and assumes it is trusted.\n\nIf input validation is missing, attackers can send crafted Intents containing malicious values, allowing them to manipulate application behavior or bypass security logic."
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="6dp"
-            android:gravity="center"
-            android:layout_marginTop="12dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EXPORTED ACTIVITY"
-            android:textColor="@color/neon_green"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-condensed"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="An exported Activity can be launched by other applications.\n\nWhen sensitive Activities are exported without permission checks, attackers can access protected screens directly, bypassing authentication and normal application flow."
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="6dp"
-            android:gravity="center"
-            android:layout_marginTop="12dp"/>
-
+        <View
+            android:layout_width="100dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/neon_green" />
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/btnAccessLab">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- Explanation -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DEFINITION"
+                android:textColor="@color/neon_green"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="An exported Activity is one that can be launched by components from other applications. This is dangerous if the Activity handles sensitive data or performs privileged actions without authentication."
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-light"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Vulnerable Code Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VULNERABLE MANIFEST SNIPPET"
+                android:textColor="@color/neon_green"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_terminal_box_thin"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="&lt;activity\n    android:name=&quot;.Admin&quot;\n    android:exported=&quot;true&quot; /&gt;"
+                    android:textColor="#E0E0E0"
+                    android:textSize="13sp"
+                    android:fontFamily="monospace"
+                    android:lineSpacingExtra="4dp"/>
+            </LinearLayout>
+
+            <!-- Impact -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SECURITY IMPACT"
+                android:textColor="@color/neon_green"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• Bypassing login/authentication\n• Unauthorized access to Admin panels\n• Manipulation of sensitive app data\n• Privileged action execution by malicious apps"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-light"
+                android:lineSpacingExtra="6dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAccessLab"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="24dp"
         android:background="@drawable/bg_rounded_button_green"
         android:fontFamily="monospace"
         android:letterSpacing="0.05"
@@ -110,8 +134,6 @@
         android:textColor="@color/app_background_dark"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

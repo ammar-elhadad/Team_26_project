@@ -5,71 +5,140 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141414"
+    android:background="@color/app_background_dark"
     tools:context=".intro_to_android_security">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Intro to Android Security"
-        android:fontFamily="monospace"
-        android:textColor="@color/neon_green"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/read_more"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Content -->
-    <TextView
-        android:id="@+id/tvContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="monospace"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="
-Android security is the set of mechanisms and best practices used to protect Android devices, applications, and user data from malicious attacks. Because Android is the most widely used mobile operating system, it is a primary target for attackers.
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-Android security focuses on isolating apps using sandboxing, permissions, application signing, and secure APIs to prevent unauthorized access to sensitive data such as contacts, messages, files, and system resources.
+            <!-- Banner Image -->
+            <ImageView
+                android:id="@+id/introBanner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/intro_banner"
+                android:contentDescription="Android Security Banner" />
 
-Why Android security is important:
-• Billions of users store personal, financial, and work data on their phones
-• Mobile apps often handle sensitive authentication tokens and payment information
-• A single vulnerable app can expose large amounts of private data
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
 
-Real-world Android security incidents:
-• Stagefright Vulnerability (2015): A critical bug in Android’s media library that allowed attackers to execute code by sending a malicious MMS message without user interaction.
-• Joker Malware: A malicious malware family that infected Google Play apps and secretly subscribed users to premium services.
-• StrandHogg Attack: A task re-parenting vulnerability that allowed malicious apps to impersonate legitimate apps and steal credentials.
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="UNDERSTANDING ANDROID SECURITY"
+                    android:textColor="@color/neon_green"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-In the next labs, you will explore real Android vulnerabilities and learn how to exploit weak implementations and how to defend against them.
-" />
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@color/neon_green" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:lineSpacingExtra="6dp"
+                    android:text="Android security is a multi-layered defense system. As the most widely used mobile platform, protecting billions of users from malicious attacks is a massive challenge that involves isolating apps, managing permissions, and securing hardware."
+                    android:textColor="#E0E0E0"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="monospace"
+                    android:text="CORE PRINCIPLES"
+                    android:textColor="@color/neon_green"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:lineSpacingExtra="4dp"
+                    android:text="• Application Sandboxing\n• User-granted Permissions\n• Secure Inter-Process Communication\n• Verified Boot and Disk Encryption"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="monospace"
+                    android:text="WHY IT MATTERS"
+                    android:textColor="@color/neon_green"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:lineSpacingExtra="4dp"
+                    android:text="A single vulnerability can expose financial records, private messages, and authentication tokens. Learning the 'hacker' mindset is the first step toward building impenetrable applications."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="monospace"
+                    android:text="HISTORICAL BREACHES"
+                    android:textColor="@color/neon_green"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:lineSpacingExtra="4dp"
+                    android:text="From Stagefright to StrandHogg, the history of Android is marked by clever exploits that bypassed the OS's strongest defenses. In this lab, you will learn to spot these weaknesses."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/read_more"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/green_border_box"
         android:fontFamily="monospace"
         android:letterSpacing="0.05"
         android:paddingVertical="16dp"
-        android:text="READ MORE"
+        android:text="LEARN BEST PRACTICES"
         android:textColor="@color/neon_green"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@id/to_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -78,16 +147,16 @@ In the next labs, you will explore real Android vulnerabilities and learn how to
         android:id="@+id/to_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/bg_rounded_button_green"
         android:fontFamily="monospace"
         android:letterSpacing="0.05"
         android:paddingVertical="16dp"
-        android:text="HOME PAGE"
+        android:text="BACK TO DASHBOARD"
         android:textColor="@color/app_background_dark"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
