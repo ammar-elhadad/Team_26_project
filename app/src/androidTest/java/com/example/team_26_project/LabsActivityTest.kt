@@ -34,7 +34,7 @@ class LabsActivityTest {
         onView(allOf(withId(R.id.btnReadLab), isDescendantOfA(withId(R.id.module_SQL))))
             .perform(click())
 
-        intended(hasComponent(SQL_injection::class.java.name))
+        intended(hasComponent(sql::class.java.name))
     }
 
 
@@ -43,7 +43,7 @@ class LabsActivityTest {
         onView(allOf(withId(R.id.btnReadLab), isDescendantOfA(withId(R.id.module2))))
             .perform(click())
 
-        intended(hasComponent(IntentLab::class.java.name))
+        intended(hasComponent(intent_explanation::class.java.name))
     }
 
     @Test
@@ -51,7 +51,7 @@ class LabsActivityTest {
         onView(allOf(withId(R.id.btnReadLab), isDescendantOfA(withId(R.id.module3))))
             .perform(click())
 
-        intended(hasComponent(redirect_activity::class.java.name))
+        intended(hasComponent(intent_redirection_explanation::class.java.name))
     }
 
     @Test
@@ -59,7 +59,7 @@ class LabsActivityTest {
         onView(allOf(withId(R.id.btnReadLab), isDescendantOfA(withId(R.id.module4))))
             .perform(click())
 
-        intended(hasComponent(deepLink::class.java.name))
+        intended(hasComponent(deep_link::class.java.name))
     }
 
 
