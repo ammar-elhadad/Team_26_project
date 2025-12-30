@@ -61,7 +61,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
-            android:text=""
+            android:text="PwnD{n0tf_3xp0rted_BTW}"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
     </LinearLayout>
